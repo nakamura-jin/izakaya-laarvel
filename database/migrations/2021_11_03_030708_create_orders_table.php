@@ -16,11 +16,11 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->json('menu_list');
+            $table->json('menu_list')->charset(null)->nullable()->change();
             $table->tinyInteger('display');
             $table->tinyInteger('cooked');
             $table->date('date');
-            $table->time('time')->format('HH-MM');
+            $table->time('time');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
